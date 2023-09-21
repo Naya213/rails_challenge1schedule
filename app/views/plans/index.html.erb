@@ -25,8 +25,8 @@
        <tr>
          <td><%= plan.id %></td>
          <td><%= plan.title %></td>
-         <td><%= plan.start_day.strftime("%y/%m/%d") %></td>
-         <td><%= plan.finish_day.strftime("%y/%m/%d") %></td>
+         <td><%= plan.start_day.strftime("%Y/%m/%d") %></td>
+         <td><%= plan.finish_day.strftime("%Y/%m/%d") %></td>
          <td><%= plan.all_day ? '⚪︎' : '×' %></td>
          <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
          <td>
@@ -42,4 +42,13 @@
      <% end %>
    </tbody>
  </table>
+
+ <ul>
+    <li>
+        予定合計 <span><%= @record_count %><span>件
+    </li>
+    <li>
+        本日の日付<span><%= @now_date.strftime("%Y/%m/%d") %></span>
+    </li>
+ </ul>
  

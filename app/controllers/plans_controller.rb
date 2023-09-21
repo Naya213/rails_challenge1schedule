@@ -1,6 +1,8 @@
 class PlansController < ApplicationController
   def index
     @plans = Plan.all
+    @record_count = @plans.count
+    @now_date = Date.current
   end
 
   def new
