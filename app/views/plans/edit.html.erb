@@ -1,0 +1,33 @@
+<h3>予定編集</h3>
+
+<%= form_with model: @plan do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :title ,"タイトル" %></th>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :start_day ,"開始日" %></th>
+      <td><%= f.date_field :start_day %></td>
+    </tr>
+    <tr>
+    <th><%= f.label :finish_day ,"終了日" %></th>
+    <td><%= f.date_field:finish_day %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :all_day ,"終日" %></th>
+      <td><%= f.check_box:all_day %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :memo ,"スケジュールメモ" %></th>
+      <td><%= f.text_area :memo %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <li><%= f.submit "編集を完了する" %></li>
+      <li><%= link_to "予定一覧に戻る", :plans %></li>
+    </ul>
+  </div>
+<% end %>

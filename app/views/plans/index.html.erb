@@ -15,6 +15,7 @@
        <th>終日</th>
        <th>更新日</th>
        <th>参照</th>
+       <th>編集</th>
      </tr>
    </thead>
  
@@ -28,7 +29,10 @@
          <td><%= plan.all_day ? '⚪︎' : '×' %></td>
          <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
          <td>
-         <%= link_to "参照", plan %>
+         <%= link_to "参照", plan_path(plan) %>
+         </td>
+         <td>
+         <%= link_to "編集", edit_plan_path(plan) %>
          </td>
        </tr>
      <% end %>
