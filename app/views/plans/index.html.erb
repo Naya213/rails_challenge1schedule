@@ -16,6 +16,7 @@
        <th>更新日</th>
        <th>参照</th>
        <th>編集</th>
+       <th>削除</th>
      </tr>
    </thead>
  
@@ -24,15 +25,18 @@
        <tr>
          <td><%= plan.id %></td>
          <td><%= plan.title %></td>
-         <td><%= plan.start_day.strftime("%Y/%m/%d") %></td>
-         <td><%= plan.finish_day.strftime("%Y/%m/%d") %></td>
+         <td><%= plan.start_day.strftime("%y/%m/%d") %></td>
+         <td><%= plan.finish_day.strftime("%y/%m/%d") %></td>
          <td><%= plan.all_day ? '⚪︎' : '×' %></td>
          <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
          <td>
-         <%= link_to "参照", plan_path(plan) %>
+         <%= link_to "参照",plan_path(plan) %>
          </td>
          <td>
          <%= link_to "編集", edit_plan_path(plan) %>
+         </td>
+         <td>
+         <%= link_to "削除", plan_path(plan), method: :delete, data: { confirm: "本当に削除しますか？" } %>
          </td>
        </tr>
      <% end %>
