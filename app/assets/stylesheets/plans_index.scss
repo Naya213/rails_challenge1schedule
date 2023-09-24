@@ -1,0 +1,30 @@
+.btn-delete {
+    --bs-btn-color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    --bs-btn-bg: none;
+    --bs-btn-border-color: none;
+    --bs-btn-hover-color: #1a0dab;
+    --bs-btn-hover-bg: none;
+    --bs-btn-hover-border-color: none;
+    --bs-btn-active-color: #1a0dab;
+    --bs-btn-active-bg: none;
+    --bs-btn-active-border-color: none;
+    text-decoration: underline;
+    padding: 0;
+}
+.modal-btn-delete{
+    color: #fff;
+    background-color: #ff4949;
+    border-color: #ff4949;
+}
+.modal-btn-delete:hover{
+    color: #fff;
+    background-color: #f92727;
+    border-color: #f92727;
+}
+.modal-btn-delete a{
+    color: #fff;
+    text-decoration: none;
+}
+.modal-btn-delete a:hover{
+    color: #fff;
+}

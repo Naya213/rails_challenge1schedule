@@ -16,6 +16,7 @@ class PlansController < ApplicationController
        redirect_to :plans
      else
        render "new"
+       flash[:notice] = "予定の追加に失敗しました"
      end
   end
 
@@ -30,7 +31,7 @@ class PlansController < ApplicationController
   def update
     @plan = Plan.find(params[:id])
      if @plan.update(params.require(:plan).permit(:title, :start_day, :finish_day, :all_day, :memo))
-       flash[:notice] = "ユーザーIDが「#{@plan.id}」の情報を更新しました"
+       flash[:notice] = "スケジュールを更新しました"
        redirect_to :plans
      else
        render "edit"
@@ -40,7 +41,7 @@ class PlansController < ApplicationController
   def destroy
     @plan = Plan.find(params[:id])
     @plan.destroy
-    flash[:notice] = "ユーザーを削除しました"
+    flash[:notice] = "予定を削除しました"
     redirect_to :plans
   end
 end
