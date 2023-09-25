@@ -1,0 +1,24 @@
+<div class="wrapper-show">
+  <h3>予定詳細</h3>
+  <div class="show-btns">
+    <div class=""><%= link_to "< 予定一覧に戻る", :plans %></div>
+    <div><%= link_to "編集", edit_plan_path(@plan) %></div>
+  </div>
+
+  <h4><%= @plan.title %></h4>
+  <table class="show-datas">
+    <tr>
+      <th>開始日</th>
+      <td><%= @plan.start_day %></td>
+    </tr>
+    <tr>
+      <th>終了日</th>
+      <td><%= @plan.finish_day %></td>
+    </tr>
+    <tr>
+      <th>スケジュールメモ</th>
+      <td><%= @plan.memo %></td>
+    </tr>
+  </table>
+</div>
+

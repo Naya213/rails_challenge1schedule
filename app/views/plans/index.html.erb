@@ -1,0 +1,80 @@
+<%= stylesheet_link_tag 'plans_index' %>
+
+<div class="wrapper-pagetitle-btn">
+  <h3>予定一覧</h3>
+  <p class="btn-plan-new"><%= link_to "新規追加", :new_plan %></p>
+</div>
+ 
+ <table class="plan-list">
+   <thead>
+     <tr>
+       <th>id</th>
+       <th>タイトル</th>
+       <th>開始日</th>
+       <th>終了日</th>
+       <th>終日</th>
+       <th>更新日</th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </thead>
+ 
+   <tbody>
+     <% @plans.each do |plan| %>
+       <tr>
+         <td><%= plan.id %></td>
+         <td><%= plan.title %></td>
+         <td><%= plan.start_day.strftime("%Y/%m/%d") %></td>
+         <td><%= plan.finish_day.strftime("%Y/%m/%d") %></td>
+         <td><%= plan.all_day ? '⚪︎' : ' ' %></td>
+         <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
+         <td>
+         <%= link_to "参照",plan_path(plan) %>
+         </td>
+         <td>
+          <%= link_to "編集", edit_plan_path(plan) %>
+         </td>
+         <td>
+          <button type="button" class="btn btn-primary btn-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          削除
+          </button>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+
+ <div class="wrapper-sum-date">
+    <div>
+        予定合計 <span><%= @record_count %><span>件
+    </div>
+    <div>
+        本日の日付<span><%= @now_date.strftime("%Y/%m/%d") %></span>
+    </div>
+ </div>
+
+ <% @plans.each do |plan| %>
+ <!-- Modal -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">予定を削除しますか？</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+       「<%= plan.title %>」を削除してよろしいですか？<br>
+       この操作は取り消せません。
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+         <button type="button" class="btn btn-primary modal-btn-delete">
+           <%= link_to "削除", plan_path(plan), method: :delete %>
+         </button>
+       </div>
+     </div>
+   </div>
+ </div>
+ <% end %>
+
